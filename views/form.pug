@@ -1,0 +1,20 @@
+meta(charset="UTF-8")
+meta(name="viewport", content="width=device-width")
+style
+  include ../public/stylesheets/style.css
+title forms
+h1 Forms
+form(method="POST", action="http://localhost:3002/save", id="form")
+  label(for="name") Name
+  input#name(name="name", type="text", placeholder="Enter visitor name", required)
+  label(for="assistedBy") Assisted by
+  input#assistedBy(name="assistedBy", type="text", placeholder="name of assistant", required)
+  label(for="age") age
+  input#age(name="age", type="text", placeholder="Enter age", required)
+  label(for="dateOfVisit") date of visit
+  input#dateOfVisit(name="dateOfVisit", type="Date", default, required)
+  label(for="timeOfVisit") time of visit
+  input#timeOfVisit(name="timeOfVisit", type="time", default, required)
+  label(for="comments") comments
+  input#comments(name="comments", type="text-area", placeholder="type comments here", required)
+  button(type="submit") Submit
