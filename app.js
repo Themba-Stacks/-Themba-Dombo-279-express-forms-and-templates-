@@ -17,37 +17,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.get('/new_visit', (req, res) => {
-    res.render('form')
+    res.render('form');
+    res.end()
 });
 
 app.post('/save', (req, res) => {
     const data = req.body
     console.log(data)
-    const visitor = new newVisitor({
-        name: data.name,
-        assistedBy: data.assistedBy,
-        age: data.age,
-        dateOfVisit: data.dateOfVisit,
-        timeOfVisit: data.timeOfVisit,
-        comments: data.comments
-    });
-    visitor.save((error) => {
-        if(error){
-            res.status(500).json({message: "internal server error"})
-        }
-        else{
-            console.log("saved!")
-            res.render('thank')
-        }
-    });
-    
-});
-
-function addNewVisitor(req, res, next){
-    const data = req.body;
     const visitor = new newVisitor(data);
-    visitor.save((error) => {if(error) {res.status(500).json({message:"server error"})}});
-    next();
-}
+    visitor.save((error) => {if(error){res.status(500).json({message: "internal server error"})}})
+    console.log("saved!")
+    res.render('thank')
+    res.end();
+    });
 
 app.listen(port, () => console.log(`server started on ${port}`));

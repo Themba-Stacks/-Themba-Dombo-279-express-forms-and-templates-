@@ -1,6 +1,34 @@
-h1 { font-size: medium;
-    color: blue
+h1 { font-size: x-large;
+    color: blue;
+    text-align: center;
+
 }
 body {
     background-color: burlywood;
+    padding:5em;
+    
+}
+form{
+    padding:5px;
+    display:block;
+    padding-left: 0vw;
+
+}
+
+#name,
+#assistedBy,
+#age,
+#dateOfVisit,
+#timeOfVisit,
+#comments,
+#submitbutton{
+    padding:5px;
+    margin:10px;
+    text-align: center;
+}
+a{
+    position:center;
+}
+#backbutton{
+    text-align: center;
 }
