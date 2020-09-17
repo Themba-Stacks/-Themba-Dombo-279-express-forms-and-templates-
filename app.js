@@ -31,9 +31,9 @@ app.post('/save',addNewVisitor, getVisitor, (req, res) => {
     const age = data.age;
     const time = data.timeOfVisit;
     const comment = data.comments;
-    console.log("saved!")
-    //console.log(data)
     res.render('thank',{id, name, age, time, date, assisted, comment})
+
+    console.log("saved!")
     res.end();
 });
 
