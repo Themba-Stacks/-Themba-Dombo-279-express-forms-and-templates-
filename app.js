@@ -2,12 +2,13 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const { addNewVisitor, getVisitor } = require("./public/scripts/saveData")
 const port = 3002;
-const newVisitor = require('./models/newVisitor');
+
 
 mongoose.connect('mongodb://localhost/app', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
-db.on('error',(error) => console.error(error)).catch(()=>console.log('promise rejected'));
+db.on('error',(error) => console.error(error));
 db.once('open', () => console.log('connected to database'))
 
 app.set('views', path.join(__dirname, 'views'));
@@ -18,17 +19,24 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get('/new_visit', (req, res) => {
     res.render('form');
-    res.end()
+    res.end();
 });
 
-app.post('/save', (req, res) => {
-    const data = req.body
-    console.log(data)
-    const visitor = new newVisitor(data);
-    visitor.save((error) => {if(error){res.status(500).json({message: "internal server error"})}})
+app.post('/save',addNewVisitor, getVisitor, (req, res) => {
+    const data = res.visitor
+    const id = data._id;
+    const date = data.dateOfVisit;
+    const name = data.name;
+    const assisted = data.assistedBy;
+    const age = data.age;
+    const time = data.timeOfVisit;
+    const comment = data.comments;
     console.log("saved!")
-    res.render('thank')
+    //console.log(data)
+    res.render('thank',{id, name, age, time, date, assisted, comment})
     res.end();
-    });
+});
 
-app.listen(port, () => console.log(`server started on ${port}`));
+var server = app.listen(port, () => console.log(`server started on ${port}`));
+
+module.exports = server;

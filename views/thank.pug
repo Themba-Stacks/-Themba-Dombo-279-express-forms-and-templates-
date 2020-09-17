@@ -3,7 +3,22 @@ meta(name="viewport", content="width=device-width")
 style
   include ../public/stylesheets/style.css
 title Thank You
-h1 Thanks for the info!
+h1 Thanks for the info! The following was saved to the database: 
+#dataDiv
+  div
+    p ID: #{id}
+  div
+    p Name: #{name}
+  div
+    p Age: #{age}
+  div
+    p Time: #{time}
+  div
+    p Date: #{date}
+  div
+    p Assisted: #{assisted}
+  div
+    p Comment: #{comment}    
 #backbutton
   a(href="http://localhost:3002/new_visit")
     input(type="button", value="Back")
