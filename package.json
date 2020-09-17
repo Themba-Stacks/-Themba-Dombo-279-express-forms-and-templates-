@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/Umuzi-org/Themba-Dombo-279-express-forms-and-templates-#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "jasmine-supertest": "^1.0.0",
     "mongoose": "^5.10.5",
