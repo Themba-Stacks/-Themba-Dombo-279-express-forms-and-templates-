@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const { addNewVisitor, getVisitor } = require("./public/scripts/saveData")
 const port = 3002;
 
-
 mongoose.connect('mongodb://localhost/app', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error',(error) => console.error(error));
